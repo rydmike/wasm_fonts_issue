@@ -1,0 +1,46 @@
+name: wasm_fonts_issue
+description: Demo of WASM font load issue
+publish_to: 'none'
+version: 1.0.0
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: '>=3.24.0'
+
+# Dependencies specify other packages that your package needs in order to work.
+# To automatically upgrade your package dependencies to the latest versions
+# consider running `flutter pub upgrade --major-versions`. Alternatively,
+# dependencies can be manually updated by changing the version numbers below to
+# the latest version available on pub.dev. To see which dependencies have newer
+# versions available, run `flutter pub outdated`.
+dependencies:
+  cupertino_icons: ^1.0.8
+  flutter:
+    sdk: flutter
+
+  # Google fonts, by Google material.io.
+  # https://pub.dev/packages/google_fonts
+  google_fonts: ^6.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+  # all image assets used by the program.
+  assets:
+    # Google fonts, font assets
+    - assets/google_fonts/
+
+  # Custom icon font package with only used icons.
+#  fonts:
+#    - family: NotoSans
+#      fonts:
+#        - asset: assets/google_fonts/NotoSans-Bold.ttf
+#        - asset: assets/google_fonts/NotoSans-Medium.ttf
+#        - asset: assets/google_fonts/NotoSans-Regular.ttf
+#    - family: FiraMono
+#      fonts:
+#        - asset: assets/google_fonts/FiraMono-Regular.ttf
