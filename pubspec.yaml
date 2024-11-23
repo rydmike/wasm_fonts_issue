@@ -34,13 +34,11 @@ flutter:
     # Google fonts, font assets
     - assets/google_fonts/
 
-  # Custom icon font package with only used icons.
+  # Custom fonts laded as fonts from assets:
 #  fonts:
-#    - family: NotoSans
+#    - family: Rancho
 #      fonts:
-#        - asset: assets/google_fonts/NotoSans-Bold.ttf
-#        - asset: assets/google_fonts/NotoSans-Medium.ttf
-#        - asset: assets/google_fonts/NotoSans-Regular.ttf
+#        - asset: assets/google_fonts/Rancho-Regular.ttf
 #    - family: FiraMono
 #      fonts:
 #        - asset: assets/google_fonts/FiraMono-Regular.ttf
