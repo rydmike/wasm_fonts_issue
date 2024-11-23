@@ -3,31 +3,46 @@
 A repo to demonstrate a font loading issue with Flutter WASM and 
 Google Fonts.
 
+## Issue
+
 In WASM builds the Google Fonts are not loaded when using them as implicit assets.
 
+This is issue one of tree issues discussed with @kevmoo in a video meeting Nov 18, 2024.
 
+The issue can be demonstrated by using the sample repo: https://github.com/rydmike/wasm_fonts_issue
 
-## Expect
+It needs a repo since the font assets are needed to demonstrate the issue.
+
+## Expected results
 
 Expect Google Fonts to load and be used in a Flutter WEB WASM build using same code and configuration as for native Flutter VM builds and Web JS builds, when using Google Fonts in the Flutter app, bundled as assets.
 
+Build the sample counter application as WEB JS build and VM build, in this example macOS build was used.
 
-| WEB JS BUILD | VM MacOS Build  |
-|--------------|-----------------|
-|              |                 |
+| WEB JS BUILD                                                                                                          | VM MacOS Build                                                                                                         |
+|-----------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
+| ![Screenshot 2024-11-23 at 21 54 59](https://github.com/user-attachments/assets/c6d830d4-a721-4a99-9a0a-52c4e1dd2935) | ![Screenshot 2024-11-23 at 21 52 39](https://github.com/user-attachments/assets/b8de6f63-15ef-4914-82b3-0519d852b28e)  |
+
+In both cases the example fonts are loaded from assets correctly.
 
 
-The example fonts are loaded from assets correctly.
+## Actual results
 
-## Actual WEB WASM Build
+Build the exact same application as a WASM build, using flag `--wasm`:
 
-The example fonts are not loaded:
+The fonts are **NOT** loaded:
+
+![Screenshot 2024-11-23 at 21 55 58](https://github.com/user-attachments/assets/b3e3e86b-8953-4fe7-a526-7b078ec6ffe3)
+
+
 
 
 
 ## Work around
 
-If you list the individual fonts in the `pubspec.yaml` file, "the classic way" and use them as assets that way, the fonts will be loaded and used in the Flutter WASM build too.
+## Workaround
+
+If you list the individual fonts in the `pubspec.yaml` file using "the classic way" and use them as assets that way, the fonts will be loaded and used in the Flutter WASM build too.
 
 Uncomment the fonts in the project `pubspec.yaml`:
 
@@ -55,19 +70,24 @@ So it becomes:
 
 Build WEB --wasm again, hot-restart was enough on in my case, fonts are **now** loaded and used correctly.
 
+![Screenshot 2024-11-23 at 21 56 56](https://github.com/user-attachments/assets/23eb0627-70fd-4e50-ae4f-2302119efbeb)
+
+
 But the way mentioned in Google Fonts docs here:
 
 https://pub.dev/packages/google_fonts#bundling-fonts-when-releasing
 
 to only put them in assets and have them loaded, does not work.
+
 This does as shown work in both VM and Web JS builds, it only fails in the WASM build.
 
+So the WASM build does something different that causes the fonts not to load in a setup that works in WEB JS and VM builds. This was unexpected and required a lot of trouble shooting to find the presented simple workaround. Expect WASM to behave the same way as VM and JS build builds when loading Google font assets.
 
 ## Source code
 
-See repo:
+See repo: https://github.com/rydmike/wasm_fonts_issue
 
-The app uses the Google Fonts feature to force loading used fonts as assetts:
+The app uses the Google Fonts feature to force loading used fonts as assets:
 
 ```dart
 // Only use Google fonts via asset provided fonts.
