@@ -3,9 +3,11 @@
 A repo to demonstrate a font loading issue with Flutter WASM and 
 Google Fonts.
 
+The issue is reported here: https://github.com/flutter/flutter/issues/159375
+
 ## Issue
 
-In WASM builds the Google Fonts are not loaded when using them as implicit assets.
+In Flutter WASM builds the Google Fonts are not loaded when using them as implicit assets.
 
 This is issue one of tree issues discussed with @kevmoo in a video meeting Nov 18, 2024.
 
@@ -144,8 +146,6 @@ GoogleFonts.config.allowRuntimeFetching = false;
 
 [✓] Network resources
     • All expected network resources are available.
-
-
 
 ```
 
