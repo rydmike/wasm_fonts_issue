@@ -37,11 +37,6 @@ The fonts are **NOT** loaded:
 ![Screenshot 2024-11-23 at 21 55 58](https://github.com/user-attachments/assets/b3e3e86b-8953-4fe7-a526-7b078ec6ffe3)
 
 
-
-
-
-## Work around
-
 ## Workaround
 
 If you list the individual fonts in the `pubspec.yaml` file using "the classic way" and use them as assets that way, the fonts will be loaded and used in the Flutter WASM build too.
